@@ -5,11 +5,10 @@ import java.util.List;
 public class Ex17QuestionnaireForm {
      private String name;
     private String email;
-    private List<Integer>gender;
+    private List<Integer>genderList;
     private List<Integer>hobbyList;
-    private String lang;
+    private List<Integer>langList;
     private String comment;
-
     public String getName() {
         return name;
     }
@@ -22,11 +21,11 @@ public class Ex17QuestionnaireForm {
     public void setEmail(String email) {
         this.email = email;
     }
-    public List<Integer> getGender() {
-        return gender;
+    public List<Integer> getGenderList() {
+        return genderList;
     }
-    public void setGender(List<Integer> gender) {
-        this.gender = gender;
+    public void setGenderList(List<Integer> genderList) {
+        this.genderList = genderList;
     }
     public List<Integer> getHobbyList() {
         return hobbyList;
@@ -34,11 +33,11 @@ public class Ex17QuestionnaireForm {
     public void setHobbyList(List<Integer> hobbyList) {
         this.hobbyList = hobbyList;
     }
-    public String getLang() {
-        return lang;
+    public List<Integer> getLangList() {
+        return langList;
     }
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setLangList(List<Integer> langList) {
+        this.langList = langList;
     }
     public String getComment() {
         return comment;
@@ -46,11 +45,6 @@ public class Ex17QuestionnaireForm {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    public Integer[] getGenderList() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getGenderList'");
-    }
 
     
-
 }

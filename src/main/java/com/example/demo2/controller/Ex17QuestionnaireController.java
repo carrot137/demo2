@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo2.domain.Questionnaire;
 import com.example.demo2.form.Ex17QuestionnaireForm;
 
 
@@ -20,6 +21,7 @@ import com.example.demo2.form.Ex17QuestionnaireForm;
 @Controller
 @RequestMapping("/questionnaire")
 public class Ex17QuestionnaireController {
+    
     @RequestMapping("")
     public String index(Model model){
         Map<Integer,String>genderMap=new LinkedHashMap<>();
@@ -31,14 +33,19 @@ public class Ex17QuestionnaireController {
         hobbyMap.put(1,"野球");
         hobbyMap.put(2,"サッカー");
         model.addAttribute("hobbyMap",hobbyMap);
-        
-        return "questionnaire/ex-17-input";  
+        Map<Integer,String>langMap=new LinkedHashMap<>();
+        langMap.put(1, "Java");
+        langMap.put(2, "Python");
+        langMap.put(3, "Ruby");
+        langMap.put(4, "C");
+        model.addAttribute("langMap",langMap);
+        return "user/ex-17-input";  
     }
     @RequestMapping("/create")
     public String create(
         Ex17QuestionnaireForm form,RedirectAttributes redirectAttributes
     ){
-        Ex17QuestionnaireForm ex17=new Ex17QuestionnaireForm();
+        Questionnaire ex17=new Questionnaire();
         BeanUtils.copyProperties(form, ex17);
 
         List<String>genderList=new ArrayList<>();
@@ -51,7 +58,8 @@ public class Ex17QuestionnaireController {
                 genderList.add("女性");
                 break;
             }
-        
+        }
+        ex17.setGenderList(genderList);
         List<String>hobbyList=new ArrayList<>();
         for(Integer hobbyCode : form.getHobbyList()){
             switch(hobbyCode){
@@ -63,16 +71,34 @@ public class Ex17QuestionnaireController {
                 break;
         }
     } 
-}
+    ex17.setHobbyList(hobbyList);
+    List<String>langList=new ArrayList<>();
+        for(Integer langCode : form.getLangList()){
+            switch(langCode){
+                case 1:
+                langList.add("Java");
+                break;
+                case 2:
+                langList.add("Python");
+                break;
+                case 3:
+                langList.add("Ruby");
+                break;
+                case 4:
+                langList.add("C");
+                break;
+        }
+    } 
+    ex17.setLangList(langList);
     //？？
     redirectAttributes.addFlashAttribute("Ex17", ex17);
-    return "redirect:/user/ex-17-result";
-    }
+    return "redirect:/questionnaire/toresult";
+}
     @RequestMapping("/toresult")
     public String toresult(){
         return "user/ex-17-result";
     }
 
         
-    }
+}
 

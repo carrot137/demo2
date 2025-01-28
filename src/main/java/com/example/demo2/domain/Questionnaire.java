@@ -6,11 +6,10 @@ public class Questionnaire {
 
     private String name;
     private String email;
-    private List<String>gender;
+    private List<String>genderList;
     private List<String>hobbyList;
-    private String lang;
+    private List<String>langList;
     private String comment;
-    
     public String getName() {
         return name;
     }
@@ -23,11 +22,11 @@ public class Questionnaire {
     public void setEmail(String email) {
         this.email = email;
     }
-    public List<String> getGender() {
-        return gender;
+    public List<String> getGenderList() {
+        return genderList;
     }
-    public void setGender(List<String> gender) {
-        this.gender = gender;
+    public void setGenderList(List<String> genderList) {
+        this.genderList = genderList;
     }
     public List<String> getHobbyList() {
         return hobbyList;
@@ -35,11 +34,11 @@ public class Questionnaire {
     public void setHobbyList(List<String> hobbyList) {
         this.hobbyList = hobbyList;
     }
-    public String getLang() {
-        return lang;
+    public List<String> getLangList() {
+        return langList;
     }
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setLangList(List<String> langList) {
+        this.langList = langList;
     }
     public String getComment() {
         return comment;
@@ -47,4 +46,6 @@ public class Questionnaire {
     public void setComment(String comment) {
         this.comment = comment;
     }
+    
+    
 }

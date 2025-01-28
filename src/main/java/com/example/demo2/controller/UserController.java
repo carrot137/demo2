@@ -8,16 +8,28 @@ import java.util.Map;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo2.domain.User;
+import com.example.demo2.domain.User2;
 import com.example.demo2.form.UserForm;
 import com.example.demo2.servis.UserServis;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    
+
+    @ModelAttribute
+    public UserForm setUpForm(){
+        return new UserForm();
+    }
+
+
     @RequestMapping("")
     public String index(Model model){
         Map<Integer,String>hobbyMap=new LinkedHashMap<>();
@@ -31,8 +43,13 @@ public class UserController {
     }
     @RequestMapping("/create")
     public String create(
-        UserForm form,RedirectAttributes redirectAttributes
-    ){
+        @Validated UserForm form
+        ,BindingResult result
+        ,RedirectAttributes redirectAttributes
+        ,Model model){
+        if(result.hasErrors()){
+            return index(model);
+        } 
         User user=new User();
         BeanUtils.copyProperties(form, user);
 
@@ -65,5 +82,6 @@ public class UserController {
     public String toresult(){
         return "user/result";
     }
+    
 
 }
