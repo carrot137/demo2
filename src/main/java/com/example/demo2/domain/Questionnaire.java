@@ -2,21 +2,15 @@ package com.example.demo2.domain;
 
 import java.util.List;
 
-public class User {
-    private Integer id;
+public class Questionnaire {
+
     private String name;
     private String email;
-    private String password;
+    private List<String>gender;
     private List<String>hobbyList;
- 
-  
-   
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private String lang;
+    private String comment;
+    
     public String getName() {
         return name;
     }
@@ -29,11 +23,11 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getPassword() {
-        return password;
+    public List<String> getGender() {
+        return gender;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setGender(List<String> gender) {
+        this.gender = gender;
     }
     public List<String> getHobbyList() {
         return hobbyList;
@@ -41,7 +35,16 @@ public class User {
     public void setHobbyList(List<String> hobbyList) {
         this.hobbyList = hobbyList;
     }
-
-    
-
+    public String getLang() {
+        return lang;
+    }
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+    public String getComment() {
+        return comment;
+    }
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }
